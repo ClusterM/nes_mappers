@@ -41,7 +41,6 @@ module MMC3 # (parameter USE_CHR_RAM = 1)
 	reg irq_enabled;
 	reg irq_value;
 	reg irq_ready;
-	reg started;
 	
 	assign cpu_wr_out = cpu_rw_in || ram_protect[6];
 	assign cpu_rd_out = ~cpu_rw_in;
@@ -115,7 +114,7 @@ module MMC3 # (parameter USE_CHR_RAM = 1)
 		ppu_addr_out[18] <= 0;
 	end
 	
-	// Renable IRQ only when PPU A12 is low
+	// Reenable IRQ only when PPU A12 is low
 	always @ (*)
 	begin
 		if (!irq_enabled)
